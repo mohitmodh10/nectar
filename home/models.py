@@ -14,7 +14,7 @@ class UserModel(AbstractUser):
     last_name = models.CharField(max_length=64, null= False)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=128,null=False)
-    profile_image = models.ImageField(upload_to=nameFile, blank=True, null=False)
+    profile_image = models.ImageField(upload_to=nameFile, blank=True, null=True)
     username = None
 
     objects = UserManager()
