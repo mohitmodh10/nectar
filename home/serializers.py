@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import UserModel
+from .models import UserModel,ProductModel
 from django.contrib.auth.hashers import make_password
 
 
@@ -20,3 +20,10 @@ class UserSerializer(serializers.ModelSerializer):
         password = make_password(password=validated_data['password'],hasher='default', salt=None),)
         user.save()
         return user
+
+
+class ProductSeriaizer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = ProductModel
+        fields = "__all__"
