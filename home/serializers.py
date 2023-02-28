@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import UserModel,ProductModel
+from .models import UserModel,ProductModel,ProductImagesModel
 from django.contrib.auth.hashers import make_password
 
 
@@ -20,10 +20,16 @@ class UserSerializer(serializers.ModelSerializer):
         password = make_password(password=validated_data['password'],hasher='default', salt=None),)
         user.save()
         return user
+    
+
+class ProductImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductImagesModel
+        fields = "__all__"
 
 
 class ProductSeriaizer(serializers.ModelSerializer):
-    
+    product_images = ProductImageSerializer(many=True, read_only = True)
     class Meta:
         model = ProductModel
-        fields = "__all__"
+        fields = ['id','product_name','product_dic','product_price','product_discount_price','product_type','product_images']

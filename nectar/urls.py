@@ -10,4 +10,5 @@ urlpatterns = [
     path('userLogin',userViewSet.UserViewSet.userLogin),
     path('userProfileUpdate',userViewSet.UserViewSet.userUpdate),
     path('addProduct',productViewSet.ProductViewSet.addProduct),
+    path('getProduct',productViewSet.ProductViewSet.getProduct),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
