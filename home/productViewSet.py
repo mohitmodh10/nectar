@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from django.http import response
 from rest_framework.serializers import Serializer
 from .serializers import ProductSeriaizer, ProductImageSerializer
-from .models import ProductModel
+from .models import ProductModel,ProductImagesModel
 from rest_framework import viewsets
 from django.http import QueryDict
 
@@ -57,3 +57,9 @@ class ProductViewSet(viewsets.ModelViewSet):
         #     return response.JsonResponse(data)
         
     
+    @api_view(['GET'])
+    def getProductImages(request):
+        queryset = ProductImagesModel.objects.all()
+        s = ProductImageSerializer(queryset,many = True)
+        data = generateCommonResponse(1,"Success",s.data)
+        return response.JsonResponse(data)

@@ -20,7 +20,7 @@ class UserViewSet(viewsets.ModelViewSet):
                 refresh = RefreshToken.for_user(user)
                 data =  {
                     "status":1,
-                    "message": "data saved successfully",
+                    "message": "User saved successfully",
                     "data":s.data,
                     "token":str(refresh.access_token) 
                     }
