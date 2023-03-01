@@ -30,7 +30,7 @@ class UserModel(AbstractUser):
 
 class ProductModel(models.Model):
     product_name = models.CharField(max_length=64,null= False)
-    product_dic = models.CharField(max_length=64,null= True,blank=True)
+    product_dic = models.TextField(null= True,blank=True)
     product_price = models.FloatField(max_length=5,null= False,blank=False)
     product_discount_price = models.FloatField(max_length=5,null=True,blank=True)
     product_type = models.CharField(max_length=64,null=False,blank=False)
